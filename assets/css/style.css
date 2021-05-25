@@ -1,0 +1,8 @@
+.navbar-brand {
+    font-size: 30px;
+    padding-left: 10px;
+}
+.active{
+    padding-right: 20px;
+    font-size: 17px;
+}
