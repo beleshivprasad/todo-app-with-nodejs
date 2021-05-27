@@ -20,7 +20,19 @@ router.get("/register",controller.getRegister);
 router.get("/dashboard",checkAuth,controller.getDashboard);
 
 //ROUTE FOR DASHBOARD
+router.get("/add",checkAuth,controller.getAdd);
+
+//ROUTE FOR DASHBOARD Check
+router.put("/dashboard/:check",checkAuth,controller.getDashboard);
+
+//ROUTE FOR DASHBOARD
+router.put("/dashboard/:delete",checkAuth,controller.getDashboard);
+
+//ROUTE FOR DASHBOARD
 router.get("/logout",controller.getLogout);
+
+//ROUTE FOR DASHBOARD
+router.get("*",controller.getNotfound);
 
 //POST REQUEST
 router.post('/login',controller.postLogin);
@@ -29,7 +41,9 @@ router.post('/login',controller.postLogin);
 router.post('/register',controller.postRegister);
 
 //POST REQUEST
-router.post('/dashboard',checkAuth,controller.postDashboard);
+router.post('/add',checkAuth,controller.postAdd);
+
+
 
 
 module.exports = router;

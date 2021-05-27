@@ -8,8 +8,6 @@ const passport = require('passport')
 //Get Strategy
 require('./authentication/passport')(passport)
 
-
-
 //dotenv for getting PORT and DATABASE details.
 const dotenv = require('dotenv')
 dotenv.config({path:'./config.env'});

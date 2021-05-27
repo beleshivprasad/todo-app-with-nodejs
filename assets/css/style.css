@@ -6,3 +6,27 @@
     padding-right: 20px;
     font-size: 17px;
 }
+.utab{
+    margin:auto auto;
+    text-align:center;
+    width:80%;
+}
+.ltab{
+    margin:auto auto;
+    text-align:center;
+    width:80%;
+}
+.addtask{
+    margin-top:10%;
+}
+.mt{
+    margin-top:2%;
+}
+
+tr:hover{
+    background-color:lightgray;
+}
+
+.notfound{
+    margin-top:5%;
+}
