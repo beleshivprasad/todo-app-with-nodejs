@@ -29,8 +29,7 @@
             <a class="nav-link btn-dark btn-outline" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link btn-dark btn-outline" href="/add">Add Tasks <span
-                class="sr-only">(current)</span></a>
+            <a class="nav-link btn-dark btn-outline" href="/add">Add Tasks <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <div class="dropdown">
@@ -68,79 +67,97 @@
     <h1 class="text-center mt">My Tasks</h1>
     <% if(success_msg !='' ){ %>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>
-              <%= success_msg%>
-          </strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
+        <strong>
+          <%= success_msg%>
+        </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <% } %>
-          <% if(error_msg !='' ){ %>
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>
-                      <%= error_msg%>
-                  </strong>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <% } %>
-    <hr>
-    <h2 class="text-center">ToDo</h2>
-    <table class="table utab">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Title</th>
-          <th scope="col">Task</th>
-          <th scope="col">Task Created</th>
-          <th scope="col">Mark Done</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% data.forEach(function(item,index){ %>
-        <% if(item.status=="ToDo"){ %>
+        <% if(error_msg !='' ){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>
+              <%= error_msg%>
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <% } %>
+            <hr>
+            <h2 class="text-center">ToDo</h2>
+            <table class="table utab">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Task</th>
+                  <th scope="col">Task Created</th>
+                  <th scope="col">Mark Done</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach(function(item,index){ %>
+                  <% if(item.status=="ToDo" ){ %>
 
-          <tr>
-            <th scope="row"><%=index+1%></th>
-            <td><%=item.title%></td>
-            <td><%=item.task%></td>
-            <td><%=item.dateTime%></td>
-            <td><a href= "/dashboard/?check=<%=item.id%>" style="color: black;"><i class="fas fa-check-square"></i></a></td>
-          </tr>
-        <% } %> 
-        <% }) %> 
-      </tbody>
-    </table>
+                    <tr>
+                      <th scope="row">
+                        <%=index+1%>
+                      </th>
+                      <td>
+                        <%=item.title%>
+                      </td>
+                      <td>
+                        <%=item.task%>
+                      </td>
+                      <td>
+                        <%=item.dateTime%>
+                      </td>
+                      <td><a href="/dashboard/?check=<%=item.id%>" style="color: black;"><i
+                            class="fas fa-check-square"></i></a></td>
+                    </tr>
+                    <% } %>
+                      <% }) %>
+              </tbody>
+            </table>
 
-    <hr>
-    <h2 class="text-center">Completed Task</h2>
-    <table class="table ltab">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Title</th>
-          <th scope="col">Task</th>
-          <th scope="col">Task Completed</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% data.forEach(function(item,index){ %>
-          <% if(item.status =="Done"){ %>
+            <hr>
+            <h2 class="text-center">Completed Task</h2>
+            <table class="table ltab">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Task</th>
+                  <th scope="col">Task Completed</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach(function(item,index){ %>
+                  <% if(item.status=="Done" ){ %>
 
-            <tr>
-              <th scope="row"><%=index+1%></th>
-              <td><%=item.title%></td>
-              <td><%=item.task%></td>
-              <td><%=item.dateTime%></td>
-              <td><a href= "/dashboard/?delete=<%=item.id%>" style="color: black;"><i class="fas fa-trash"></i></a></td>
-            </tr>
-          <% } %> 
-        <% }) %> 
-      </tbody>
-    </table>
+                    <tr>
+                      <th scope="row">
+                        <%=index+1%>
+                      </th>
+                      <td>
+                        <%=item.title%>
+                      </td>
+                      <td>
+                        <%=item.task%>
+                      </td>
+                      <td>
+                        <%=item.dateTime%>
+                      </td>
+                      <td><a href="/dashboard/?delete=<%=item.id%>" style="color: black;"><i
+                            class="fas fa-trash"></i></a></td>
+                    </tr>
+                    <% } %>
+                      <% }) %>
+              </tbody>
+            </table>
   </div>
 </body>
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

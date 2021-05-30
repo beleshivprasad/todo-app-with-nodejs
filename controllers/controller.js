@@ -4,6 +4,7 @@ const passport = require('passport')
 //DB connection
 const User = require('../models/user');
 const ToDo = require('../models/todo');
+var today = new Date();
 
 require('../authentication/passport')(passport)
 
@@ -31,10 +32,8 @@ exports.getDashboard = (req, res) => {
     const check = req.query.check;
     const del = req.query.delete;
     if (check) {
-        setInterval(() => {
-            var today = new Date()
-        }, 1000);
-        var dt = `${today.getHours()}:${today.getMinutes()} ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
+        let today = new Date();
+        let dt = `${today.getHours()}:${today.getMinutes()} ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
         ToDo.findByIdAndUpdate(check, {
                 status: "Done",
                 dateTime: dt
@@ -182,9 +181,11 @@ exports.postRegister = (req, res) => {
 }
 //POST FOR LOGIN
 exports.postAdd = (req, res) => {
+    var today = new Date()
+    var dt = `${today.getHours()}:${today.getMinutes()} ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
     const {
         title,
-        task
+        task,
     } = req.body;
     if (!title || !task) {
         req.flash("error_msg", "Please Fill All the Fields");
@@ -192,9 +193,9 @@ exports.postAdd = (req, res) => {
     } else {
         const todo = new ToDo({
             title,
-            task
+            task,
+            dateTime : dt
         })
-
         todo.save()
             .then(data => {
                 if (data) {
