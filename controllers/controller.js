@@ -31,7 +31,9 @@ exports.getDashboard = (req, res) => {
     const check = req.query.check;
     const del = req.query.delete;
     if (check) {
-        var today = new Date()
+        setInterval(() => {
+            var today = new Date()
+        }, 1000);
         var dt = `${today.getHours()}:${today.getMinutes()} ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
         ToDo.findByIdAndUpdate(check, {
                 status: "Done",

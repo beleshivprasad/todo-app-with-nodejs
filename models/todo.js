@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-var today = new Date()
+setInterval(function(){
+    var today = new Date()
+},1000)
 
 var dt = `${today.getHours()}:${today.getMinutes()} ${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
 
